@@ -1,6 +1,6 @@
 {% load i18n %}
 
-<div class="submit-row btn-group" {% if is_popup %}style="overflow: auto;"{% endif %}>
+<div class="submit-row btn-group form-actions " {% if is_popup %}style="overflow: auto;"{% endif %}>
     {% if show_save %}
         <button type="submit" name="_save" value="1" class="btn btn-primary default"{{ onclick_attrib }}>{% trans 'Save' %}</button>
     {% endif %}

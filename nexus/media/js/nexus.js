@@ -39,4 +39,4 @@ jQuery.ajaxSetup({
     }
 });
 
-$("#changelist-filter").toggle(); 
+

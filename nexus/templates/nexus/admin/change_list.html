@@ -53,8 +53,8 @@
 
             {% block filters %}
                 {% if cl.has_filters %}
-                    <div id="changelist-filter">
-                        <h2>{% trans 'Filter' %}</h2>
+                    <div id="changelist-filter" class='well well-small'>
+                        <legend>{% trans 'Filter' %} <button class="close">&times;</button></legend>
                         {% for spec in cl.filter_specs %}{% admin_list_filter cl spec %}{% endfor %}
                     </div>
                 {% endif %}

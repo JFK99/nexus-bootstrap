@@ -98,11 +98,7 @@ form h4 {
     border: none !important;
 }
 
-label {
-    font-weight: normal !important;
-    color: #666;
-    font-size: 12px;
-}
+
 
 .required label, label.required {
     font-weight: bold !important;
@@ -533,26 +529,22 @@ fieldset.monospace textarea {
 
 #changelist-filter {
     display: none;
-    position: fixed;
     z-index: 1000;
     width: 160px;
-    border: 1px solid #eee;
-    background: #fff;
+    position: absolute;
+    right: 20px;
+    top: 180px;
+
 }
 
 #changelist-filter h2 {
     font-size: 1em;
-    color: #fff;
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#437ba3', endColorstr='#234b6f'); /* for IE */
-    background: -webkit-gradient(linear, left top, left bottom, from(#437ba3), to(#234b6f)); /* for webkit browsers */
-    background: -moz-linear-gradient(top,  #555,  #437ba3); /* for firefox 3.6+ */
     padding: 5px;
     font-weight: bold;
     margin-bottom: 10px;
 }
 
 #changelist-filter h3 {
-    font-size: 12px;
     font-weight: bold;
     padding: 0 5px;
     margin-bottom: 5px;
@@ -666,8 +658,6 @@ fieldset.monospace textarea {
 /* ACTIONS */
 
 .filtered .actions {
-    margin-right: 160px !important;
-    border-right: 1px solid #ddd;
 }
 
 #changelist table input {

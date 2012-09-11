@@ -314,11 +314,11 @@ def search_form(cl):
         'show_result_count': cl.result_count != cl.full_result_count,
         'search_var': SEARCH_VAR
     }
-search_form = register.inclusion_tag('admin/search_form.html')(search_form)
+search_form = register.inclusion_tag('nexus/admin/search_form.html')(search_form)
 
 def admin_list_filter(cl, spec):
     return {'title': spec.title(), 'choices' : list(spec.choices(cl))}
-admin_list_filter = register.inclusion_tag('admin/filter.html')(admin_list_filter)
+admin_list_filter = register.inclusion_tag('nexus/admin/filter.html')(admin_list_filter)
 
 def admin_actions(context):
     """
@@ -327,4 +327,4 @@ def admin_actions(context):
     """
     context['action_index'] = context.get('action_index', -1) + 1
     return context
-admin_actions = register.inclusion_tag("admin/actions.html", takes_context=True)(admin_actions)
+admin_actions = register.inclusion_tag("nexus/admin/actions.html", takes_context=True)(admin_actions)
