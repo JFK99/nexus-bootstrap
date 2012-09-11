@@ -17,7 +17,7 @@
 .app-list dd table td {
     text-align: center;
     padding: 5px;
-    width: 60px;
+    width: 80px;
 }
 .app-list dd table th {
     text-align: left;
@@ -532,9 +532,8 @@ fieldset.monospace textarea {
 /* FILTER COLUMN */
 
 #changelist-filter {
-    position: static;
-    float: right;
-    margin-top: 28px;
+    display: none;
+    position: fixed;
     z-index: 1000;
     width: 160px;
     border: 1px solid #eee;

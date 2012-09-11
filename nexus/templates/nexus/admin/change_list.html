@@ -1,6 +1,7 @@
 {% extends "nexus/admin/base_site.html" %}
-{% load adminmedia admin_list i18n %}
-
+{% load adminmedia i18n %}
+{% load nexus_admin %}
+{% load nexus_admin_list %}
 {% block head %}
   {{ block.super }}
   {% if cl.formset %}
@@ -30,26 +31,22 @@
         <li><span>{{ cl.opts.verbose_name_plural|capfirst }}</span></li>
     {% endblock %}
 {% endif %}
-
-{% block content %}
-    {% block object-tools %}
+{% block object-tools %}
         {% if has_add_permission %}
-            <ul class="object-tools">
-                <li>
-                    <a href="add/{% if is_popup %}?_popup=1{% endif %}" class="button small">
+                    <a href="add/{% if is_popup %}?_popup=1{% endif %}" class="btn btn-primary">
                         {% blocktrans with cl.opts.verbose_name as name %}Add {{ name }}{% endblocktrans %}
                     </a>
-                </li>
-            </ul>
         {% endif %}
     {% endblock %}
+{% block content %}
+    
     {% if cl.formset.errors %}
         <p class="errornote">
             {% blocktrans count cl.formset.errors|length as counter %}Please correct the error below.{% plural %}Please correct the errors below.{% endblocktrans %}
         </p>
         {{ cl.formset.non_form_errors }}
     {% endif %}
-    <div class="module{% if cl.has_filters %} filtered{% endif %}" id="changelist">
+    <div class="module{% if cl.has_filters %} filtered{% endif %}">
         <div class="clearfix">
             {% block search %}{% search_form cl %}{% endblock %}
             {% block date_hierarchy %}{% date_hierarchy cl %}{% endblock %}

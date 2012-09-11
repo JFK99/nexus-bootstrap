@@ -1,7 +1,5 @@
 {% load nexus_helpers %}
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Apps <b class="caret"></b></a>
-  <ul class="dropdown-menu">
+
     {% for category in category_link_set %}
         {% if category.label and category.links|length > 1 %}
             {% for title, link, active in category.links %}
@@ -17,5 +15,3 @@
             {% endfor %}
         {% endif %}
     {% endfor %}
-  </ul>
-</li>

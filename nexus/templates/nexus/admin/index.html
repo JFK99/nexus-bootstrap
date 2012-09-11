@@ -9,7 +9,8 @@
 
 {% block content %}
     {% if app_list %}
-        <dl class="app-list">
+     <div class="row-fluid">
+        <dl class="app-list span6">
             {% for app in app_list %}
                 <dt><a href="{{ app.app_url }}" class="section">{% blocktrans with app.name as name %}{{ name }}{% endblocktrans %}</a></dt>
                 <dd>
@@ -23,13 +24,13 @@
                         {% endif %}
 
                         {% if model.perms.add %}
-                            <td><a href="{{ model.admin_url }}add/" class="addlink">{% trans 'Add' %}</a></td>
+                            <td><a href="{{ model.admin_url }}add/" class=""><i class='icon-plus-sign'></i> {% trans 'Add' %}</a></td>
                         {% else %}
                             <td>&nbsp;</td>
                         {% endif %}
 
                         {% if model.perms.change %}
-                            <td><a href="{{ model.admin_url }}" class="changelink">{% trans 'Change' %}</a></td>
+                            <td><a href="{{ model.admin_url }}" class=""><i class='icon-edit'></i> {% trans 'Change' %}</a></td>
                         {% else %}
                             <td>&nbsp;</td>
                         {% endif %}
@@ -45,33 +46,47 @@
 {% endblock %}
 
 {% block sidebar %}
-    <div id="content-related">
+    <div class='span6 well well-small' id="content-related">
         <div class="module" id="recent-actions-module">
-            <h2>{% trans 'Recent Actions' %}</h2>
-            <h3>{% trans 'My Actions' %}</h3>
+            <h4>{% trans 'Recent Actions' %}</h4>
+            <h6>{% trans 'My Actions' %}</h6>
                 {% load log %}
                 {% get_admin_log 10 as admin_log for_user user %}
                 {% if not admin_log %}
                 <p>{% trans 'None available' %}</p>
                 {% else %}
-                <ul class="actionlist">
+                <dl>
                 {% for entry in admin_log %}
-                <li class="{% if entry.is_addition %}addlink{% endif %}{% if entry.is_change %}changelink{% endif %}{% if entry.is_deletion %}deletelink{% endif %}">
-                    {% if entry.is_deletion %}
-                        {{ entry.object_repr }}
-                    {% else %}
-                        <a href="{{ entry.get_admin_url }}">{{ entry.object_repr }}</a>
-                    {% endif %}
-                    <br/>
-                    {% if entry.content_type %}
-                        <span class="mini quiet">{% filter capfirst %}{% trans entry.content_type.name %}{% endfilter %}</span>
-                    {% else %}
-                        <span class="mini quiet">{% trans 'Unknown content' %}</span>
-                    {% endif %}
-                </li>
+                    <dt> {% if entry.content_type %}
+                            {% filter capfirst %}{% trans entry.content_type.name %}{% endfilter %}
+                        {% else %}
+                            {% trans 'Unknown content' %}
+                        {% endif %}
+                    </dt>
+                    <dd>
+                        <i class='
+                        {% if entry.is_addition %}
+                            icon-plus-sign
+                        {% endif %}
+                        {% if entry.is_change %}
+                            icon-edit
+                        {% endif %}
+                        {% if entry.is_deletion %}
+                            icon-minus-sign
+                        {% endif %}
+                        '></i> 
+                        {% if entry.is_deletion %}
+                            {{ entry.object_repr }}
+                        {% else %}
+                            <a href="{{ entry.get_admin_url }}">{{ entry.object_repr }}</a>
+                        {% endif %}
+                    </dd>
+                   
+                
                 {% endfor %}
-                </ul>
+                </dl>
                 {% endif %}
         </div>
     </div>
+</div>
 {% endblock %}
