@@ -2,44 +2,53 @@
 
 {% load i18n %}
 
+{% load custom_form %}
 {% block breadcrumbs %}{% endblock %}
 
 {% block title %}{% trans "Login" %} | Nexus{% endblock %}
 
-{% block heading %}{% trans "Login" %}{% endblock %}
+
 
 {% block navigation %}{% endblock %}
 
 {% block container %}
     <div id="container" class="login-area">
       <div class="wrapper">
-        <p>{% trans "You must log in to continue." %}</p>
-    
-        {% if form.errors %}
-            <p class="error">{% trans "Your username and password didn't match. Please try again." %}</p>
-        {% endif %}
-
-        <form method="post" action="" class="login-form">
-            <input type="hidden" name="next" value="{{ next }}" />
+        <legend>{% trans "You must log in to continue." %}</legend>
         
+    
+        <form  method="post" action="" class="form-horizontal">
             {% csrf_token %}
-            <table>
-                <colgroup>
-                    <col width="100px"/>
-                    <col/>
-                </colgroup>
-                <tr>
-                    <td>{{ form.username.label_tag }}</td>
-                    <td>{{ form.username }}</td>
-                </tr>
-                <tr>
-                    <td>{{ form.password.label_tag }}</td>
-                    <td>{{ form.password }}</td>
-                </tr>
-            </table>
-            <div class="submit">
-                <button type="submit" class="button">{% trans "Login" %}</button>
+        {% if form.non_field_errors %}
+                <div class="alert alert-error">
+                    <i class='icon-warning-sign'></i> 
+                    {% for error_all in form.non_field_errors %}
+                        {{ error_all }}<br/>
+                    {% endfor %}
+                </div>
+                {% endif %}
+        {% for field in form %}
+                    <div class="control-group {% if field.errors %}error{% endif %}">
+                        {{ field|label_with_classes:"control-label" }}
+                        <div class="controls">
+                            {% if field.name == "categories" or field.name == "cities" %}
+                                {{ field }}
+                                <p class="help-block">{% if field.errors %}{% for error in field.errors %}{{ error|escape }}{% endfor %}{% endif %}</p>
+                            {% else %}
+                                {{ field|add_class:"span3" }}
+                                <p class="help-block">{% if field.errors %}{% for error in field.errors %}{{ error|escape }}{% endfor %}{% endif %}{{ field.help_text }}</p>
+                            {% endif %}
+                            
+                        </div>
+                    </div>
+
+                    {% endfor %}
+
+          <div class="control-group">
+            <div class="controls">
+              <button type="submit" class="btn">{% trans "Sign In" %}</button>
             </div>
+          </div>
         </form>
       </div>
     </div>
