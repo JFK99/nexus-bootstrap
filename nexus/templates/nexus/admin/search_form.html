@@ -1,13 +1,15 @@
 {% load adminmedia %}
 {% load i18n %}
-{% if cl.search_fields %}
+
 <div id="toolbar">
 	<form id="changelist-search" class='form-inline' action="" method="get">
+		{% if cl.search_fields %}
 			<div class="input-append">
 				<input type="text" size="40" name="{{ search_var }}" value="{{ cl.query }}" id="searchbar" />
 				<input type="submit" class='btn' value="{% trans 'Search' %}" />
 			</div>
-				<button id='js-filter-toggle'class='btn btn-info'>Filter</button>
+		{% endif %}
+				<button id='js-filter-toggle'class='btn btn-info pull-right'>Filter</button>
 				{% if show_result_count %}
 				    <span class="small quiet">{% blocktrans count cl.result_count as counter %}{{ counter }} result{% plural %}{{ counter }} results{% endblocktrans %} (<a href="?{% if cl.is_popup %}pop=1{% endif %}">{% blocktrans with cl.full_result_count as full_result_count %}{{ full_result_count }} total{% endblocktrans %}</a>)</span>
 				{% endif %}
@@ -17,4 +19,4 @@
 	</form>
 </div>
 <script type="text/javascript">document.getElementById("searchbar").focus();</script>
-{% endif %}
+

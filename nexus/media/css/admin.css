@@ -200,7 +200,17 @@ form .wide p.help {
 }
 
 /* COLLAPSED FIELDSETS */
-
+fieldset.collapsed{
+    background: #ffffff; /* Old browsers */
+    background: -moz-linear-gradient(top,  #ffffff 0%, #e5e5e5 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e5e5e5)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #ffffff 0%,#e5e5e5 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #ffffff 0%,#e5e5e5 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #ffffff 0%,#e5e5e5 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #ffffff 0%,#e5e5e5 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=0 ); /* IE6-9 */
+    min-height: 30px!important;
+}
 fieldset.collapsed * {
     display: none;
 }
@@ -210,11 +220,25 @@ fieldset.collapsed h2, fieldset.collapsed {
 }
 
 fieldset.collapsed h2 {
-    background-image: url(../img/admin/nav-bg.gif);
-    background-position: bottom left;
+    font-size: 1.1em;
     color: #999;
 }
+.module h2 {
+    font-size: 1.2em;
+    margin-top: 15px;
+    padding: 8px;
+background-color: #fafafa;
+  background-image: -moz-linear-gradient(top, #ffffff, #f2f2f2);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#f2f2f2));
+  background-image: -webkit-linear-gradient(top, #ffffff, #f2f2f2);
+  background-image: -o-linear-gradient(top, #ffffff, #f2f2f2);
+  background-image: linear-gradient(to bottom, #ffffff, #f2f2f2);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#fff2f2f2', GradientType=0);
 
+
+
+}
 fieldset.collapsed .collapse-toggle {
     background: transparent;
     display: inline !important;
@@ -533,7 +557,7 @@ fieldset.monospace textarea {
     width: 160px;
     position: absolute;
     right: 20px;
-    top: 180px;
+    top: 240px;
 
 }
 
@@ -713,4 +737,53 @@ fieldset.monospace textarea {
 }
 table.table-results tr td ,table.table-results tr th{
     font-size: .85em;
+}
+
+
+
+/* MODULES */
+
+form .module {
+    border: 1px solid #ccc;
+    border-radius: 0 0 4px 4px;
+    margin-bottom: 20px;
+    background: #ffffff;
+    display: block;
+    -webkit-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+form .module p, form .module ul, form .module h3, form .module h4, form .module dl, form .module pre {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+form .module blockquote {
+    margin-left: 12px;
+}
+
+form .module ul, form .module ol {
+    margin-left: 1.5em;
+}
+
+form .module h3 {
+    margin-top: .6em;
+}
+
+form .module h2, form .module caption, form .inline-group h2 {
+    margin: 0;
+    
+    text-align: left;
+    font-weight: bold;
+    line-height: 11px!important;
+}
+
+form .module table {
+    border-collapse: collapse;
+}
+fieldset.collapse {
+    
+    min-height: 16px!important;
+    height: auto!important;
 }
